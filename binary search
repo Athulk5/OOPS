@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+class Hello {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] numbers = {10, 20, 30, 40, 50}; // Array should be sorted for binary search
+        int length = numbers.length;
+        int left = 0;
+        int right = length - 1;
+        int mid;
+
+        System.out.println("Enter number to search: ");
+        int data = scanner.nextInt();
+
+        boolean found = false;
+
+        while (left <= right) {
+            mid = (left + right) / 2;
+
+            if (numbers[mid] == data) {
+                System.out.println("Element " + data + " found at index " + mid);
+                found = true;
+                break;
+            } else if (numbers[mid] < data) {
+                left = mid + 1; // Ignore the left half
+            } else {
+                right = mid - 1; // Ignore the right half
+            }
+        }
+
+        if (!found) {
+            System.out.println("Element " + data + " not found in the array.");
+        }
+
+        scanner.close();
+    }
+}
